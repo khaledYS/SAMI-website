@@ -1,0 +1,37 @@
+import { getAuth, GoogleAuthProvider, signInWithPopup, signInWithRedirect } from "@firebase/auth";
+import { useContext, useEffect } from "react";
+import {useNavigate} from "react-router"
+import { AuthContext } from "../Auth/Auth";
+import { app, auth } from "../firebase";
+import { FcGoogle } from "react-icons/fc"
+
+function Login() {
+    const navigate = useNavigate();
+    const {currentUser} = useContext(AuthContext);
+
+    useEffect(() => {
+        if(currentUser)
+        navigate("/")
+        return null;
+    }, [currentUser]);
+
+    return (
+        <div className="w-full h-full grid place-items-center text-xl">
+            <button className="bg-[#A3CCAB] px-4 py-2 rounded-lg Roboto-font text-center mx-auto hover:brightness-75 transition-all" onClick={()=>{
+                (async ()=>{
+                    try {
+                        const provider = new GoogleAuthProvider();
+                        const user = await signInWithRedirect(getAuth(app), provider);
+                        console.log(user)
+                        navigate("/")
+                    }catch (err){
+                        console.log(err )
+                        alert(err)
+                    }
+                })()
+            }}>Signin with Google <FcGoogle className="mx-auto text-4xl" /> </button>
+        </div> 
+    );
+}
+
+export default Login;
