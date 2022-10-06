@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <title>VRRT</title>
+    <script type="module" crossorigin src="/assets/index.38624129.js"></script>
+    <link rel="modulepreload" href="/assets/vendor.065d3cc6.js">
+    <link rel="stylesheet" href="/assets/index.10baced3.css">
+  </head>
+  <body>
+    <div id="root"></div>
+    
+    <script>
+      // responsivity for iphones to because of the url bar, see this : https://medium.com/@susiekim9/how-to-compensate-for-the-ios-viewport-unit-bug-46e78d54af0d
+      window.onresize = ()=>{
+        document.body.style.height = window.innerHeight+"px";
+        document.body.style.width = window.innerWidth+"px";
+      }
+      window.onresize(); // called to initially set the height.
+    </script>
+  </body>
+</html>

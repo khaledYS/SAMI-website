@@ -5,7 +5,7 @@
   "scripts": {
     "vite:dev": "vite",
     "vite:dev:network": "vite --host",
-    "vite:build": "vite:build",
+    "vite:build": "vite build",
     "tailwind:dev": "npx tailwindcss -i ./src/styles/index.css -o ./src/styles/tailwindOutput.css --watch",
     "tailwind:build": "npx tailwindcss -o ./src/styles/tailwindOutput.css --minify",
     "dev": "start npm run tailwind:dev && vite",
