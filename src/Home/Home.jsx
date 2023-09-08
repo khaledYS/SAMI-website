@@ -37,7 +37,7 @@ function Home() {
                         try {
                             e.target.username.value="";
                             e.target.message.value="";
-                            let response = await fetch(`https://sendanonymousmessageinstaapi.herokuapp.com/send/anonymous/message/${instaMessageObject.instaUsername}/${instaMessageObject.instaMessage}`);
+                            let response = await fetch(`https://32i.netlify.app/api/send/anonymous/message/${instaMessageObject.instaUsername}/${instaMessageObject.instaMessage}`);
                             response = await response.json();
                             if(response.sent == true){
                                 let collectionRef = collection(db, "users", currentUser.email, "messages");
