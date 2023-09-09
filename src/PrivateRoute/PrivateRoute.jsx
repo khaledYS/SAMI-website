@@ -8,7 +8,6 @@ function PrivateRoute() {
     useEffect(() => {
         if(!currentUser){
             navigate("/login")
-            return null;
         }
         
     }, [currentUser]);

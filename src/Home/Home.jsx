@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import {app, auth, db} from "../firebase.js"
-import {getAuth, signOut} from "firebase/auth"
+import {signOut} from "firebase/auth"
 import { AuthContext } from "../Auth/Auth.jsx";
 import {doc, getDocs, getDocFromServer, setDoc, Timestamp, serverTimestamp, addDoc, collection} from "@firebase/firestore"
 import { LoadingContext } from "../Loading/Loading.jsx";
@@ -12,7 +12,7 @@ function Home() {
     return ( 
         <div className="w-full h-full text-white">
             <div className="bg-white px-2 py-1 rounded-b-xl">
-                <img src={currentUser.providerData[0].photoURL} onClick={()=>{signOut(getAuth(app))}} className="max-w-[45px] rounded-full mx-auto cursor-pointer hover:brightness-50 transition-all" />
+                <img src={currentUser.providerData[0].photoURL} onClick={()=>{signOut(auth)}} className="max-w-[45px] rounded-full mx-auto cursor-pointer hover:brightness-50 transition-all" />
             </div>
             <div className="h-full w-full grid place-items-center">
                 <div className="w-full block">

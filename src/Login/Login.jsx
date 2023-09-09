@@ -1,4 +1,4 @@
-import { getAuth, GoogleAuthProvider, signInWithPopup, signInWithRedirect } from "@firebase/auth";
+import { GoogleAuthProvider, signInWithPopup, signInWithRedirect, getAuth } from "@firebase/auth";
 import { useContext, useEffect } from "react";
 import {useNavigate} from "react-router"
 import { AuthContext } from "../Auth/Auth";
@@ -10,9 +10,9 @@ function Login() {
     const {currentUser} = useContext(AuthContext);
 
     useEffect(() => {
+        console.log(currentUser)
         if(currentUser)
         navigate("/")
-        return null;
     }, [currentUser]);
 
     return (
@@ -21,7 +21,7 @@ function Login() {
                 (async ()=>{
                     try {
                         const provider = new GoogleAuthProvider();
-                        const user = await signInWithRedirect(getAuth(app), provider);
+                        const user = await signInWithRedirect(auth, provider);
                         console.log(user)
                         navigate("/")
                     }catch (err){

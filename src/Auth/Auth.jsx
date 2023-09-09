@@ -1,4 +1,4 @@
-import { getAuth, onAuthStateChanged } from "@firebase/auth";
+import { onAuthStateChanged } from "@firebase/auth";
 import React, { createContext, useContext, useEffect, useLayoutEffect, useState } from "react";
 import {app, auth, db} from "../firebase.js";
 import {doc, getDocs, getDocFromServer, setDoc, Timestamp, serverTimestamp} from "@firebase/firestore"
@@ -11,6 +11,7 @@ export function AuthProvider({children}) {
     const [currentUser, setCurrentUser] = useState(null)
     useEffect(() => {
         onAuthStateChanged(auth, async (user)=>{
+            console.log(user)
             if(!user){
                 setCurrentUser(null);
                 setLoading(false)

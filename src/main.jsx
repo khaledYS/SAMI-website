@@ -1,5 +1,5 @@
 import React, { cloneElement } from 'react'
-import ReactDOM from 'react-dom'
+import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './styles/index.css'
 import './styles/tailwindOutput.css'
@@ -10,7 +10,9 @@ import { AuthProvider } from './Auth/Auth'
 import PrivateRoute from './PrivateRoute/PrivateRoute'
 import { LoadingProvider } from './Loading/Loading'
 
-ReactDOM.render(
+const root = createRoot(document.getElementById("root"));
+
+root.render(
   <BrowserRouter>
     <LoadingProvider>
       <AuthProvider >
@@ -27,6 +29,5 @@ ReactDOM.render(
         </App>
       </AuthProvider>
     </LoadingProvider>
-  </BrowserRouter>,
-  document.getElementById('root')
+  </BrowserRouter>
 )
